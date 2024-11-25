@@ -47,13 +47,13 @@ if (isset($_GET['status'])) {
                     <p>Deadline: <?= $tugas['deadline'] ?></p>
                     <p class=" font-semibold">
                         <?php
-                        $deadline = new DateTime($tugas['deadline']);
-                        $now = new DateTime();
+                        //date diff
+                        $deadline = date('Y-m-d',strtotime($tugas['deadline']));
+                        $now = date('Y-m-d');
+                        $diff = date_diff(date_create($deadline), date_create($now));
+                        
 
-                        $diff = $deadline->diff($now);
-
-                        echo $deadline < $now
-                            ? "<p class=' text-red-600'>Lewat " . $diff->days . " Hari </p>"
+                        echo $deadline < $now   ? "<p class=' text-red-600'>Lewat " . $diff->days . " Hari </p>"
                             : "<p class=' text-blue-600'>Sisa " . $diff->days . " Hari </p>";
                         ?>
                     </p>
@@ -69,7 +69,7 @@ if (isset($_GET['status'])) {
                     <dialog class=" bg-gray-300" id="modal-<?= $tugas['id'] ?>">
                         <div class=" bg-white p-8 w-[400px] rounded-lg">
                             <h1 class=" text-xl font-semibold ">Detail <?= $tugas['nama'] ?></h1>
-                            <p><?= $tugas['deskripsi'] ?></p>
+                            <p class=" leng"><?= $tugas['deskripsi'] ?></p>
                             <form method="dialog" class=" mt-[100px]">
                                 <button class=" w-[60px] h-[35px] bg-stone-700 text-white p-1 rounded-lg">Close</button>
                             </form>
