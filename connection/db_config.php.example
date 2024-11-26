@@ -1,0 +1,6 @@
+<?php
+
+define("DB_HOST", "CONTOH");
+define("DB_USER", "CONTOH");
+define("DB_PASS", "CONTOH");
+define("DB_NAME", "CONTOH");
